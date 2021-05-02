@@ -1,0 +1,47 @@
+#searchBar {
+  display: inline-block;
+  border: 4px solid #5bebfb;
+  width: 50%;
+  border-radius: 5px;
+  #searchInputBox {
+    display: inline-block;
+    width: calc(100% - 60px);
+    height: 60px;
+    > input {
+      margin-left: 5%;
+      border-width: 0;
+      display: inline-block;
+      outline: none;
+      font-size: 18px;
+      height: 50px;
+      width: 95%;
+      height: 100%;
+    }
+  }
+  button {
+    float: right;
+    padding: 0;
+    font-size: 0;
+    border: 0;
+    background-color: #5bebfb;
+    #icon_search {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      margin: 10px;
+      background-image: url(../../../images/iconSearch.png);
+      background-size: 40px 40px;
+      background-repeat: no-repeat;
+    }
+  }
+  #searchDetail {
+    width: 100%;
+    height: 200px;
+    background-color: #5bebfb;
+  }
+}
+
+#advertisement {
+  background-color: antiquewhite;
+  height: 400px;
+}
