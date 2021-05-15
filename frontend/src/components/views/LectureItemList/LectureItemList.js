@@ -1,22 +1,27 @@
-import React, {Fragment, useEffect, useState} from 'react'
-import './LectureItemList.scss'
+import React, {Fragment, useEffect, useState} from 'react';
+import {Link} from "react-router-dom";
+import './LectureItemList.scss';
+import courseTestImg from '../../../images/courseTestImg.jpg';
 
 //임시 데이터
 const tempData = [
   {
-    image: '',
+    id: 1,
+    image: courseTestImg,
     title:"C언어",
     fee:"20000",
     Hash_tag:["개발", "코딩"]
   },
   {
-    image: '',
+    id: 2,
+    image: courseTestImg,
     title:"웹보안",
     fee:"50000",
     Hash_tag:["보안", "코딩"]
   },
   {
-    image: '',
+    id: 3,
+    image: courseTestImg,
     title:"피아노",
     fee:"200000",
     Hash_tag:["취미", "악기"]
@@ -32,9 +37,10 @@ const LectureItemList = () => {
   },[])
 
   const ItemsList =
-    lectureItemsInfo.map((info, i) => 
+    lectureItemsInfo.map((info) => 
       <LectureItem 
-      key={i} 
+      key={info.id}
+      id={info.id} 
       image={info.image} 
       title={info.title}
       fee={info.fee}
@@ -58,10 +64,12 @@ const LectureItem = (props) => {
   return (
     <Fragment>
       <div className="LectureItem">
-        <img src={props.image} alt={props.title}/>
+      <Link to={`/lecture/:${props.id}`}>
+        <img src={props.image}  alt={props.title}/>
         <h3>{props.title}</h3>
         <h5>{props.fee}원</h5>
         <h5>#{props.Hash_tag[0]} #{props.Hash_tag[1]}</h5>  {/* 임시로 두 개만 지정. 추후 개수, 글자수 결정*/}
+      </Link>
       </div>
     </Fragment>
   )

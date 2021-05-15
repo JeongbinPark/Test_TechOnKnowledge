@@ -15,7 +15,7 @@ const HomeSearch = () => {
   }
 
   return (
-    <Fragment>
+    <div id="HomeSearch">
       <form onSubmit={onSubmit}>
       <div id="searchBar">
         <div id="searchInputBox">
@@ -28,7 +28,7 @@ const HomeSearch = () => {
           </div>}
       </div>
       </form>
-    </Fragment>
+    </div>
   )
 }
 

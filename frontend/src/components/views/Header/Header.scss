@@ -1,0 +1,20 @@
+header {
+  height: 250px;
+  text-align: center;
+  padding: 30px;
+  #logo {
+    width: 500px;
+    margin-top: 45px;
+  }
+  #myPage {
+    float: right;
+    #icon_mypage {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-image: url(../../../images/iconMypage.png);
+      background-size: 30px 30px;
+      background-repeat: no-repeat;
+    }
+  }
+}

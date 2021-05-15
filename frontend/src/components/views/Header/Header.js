@@ -1,14 +1,17 @@
-import React from 'react'
- 
+import React from 'react';
+import {Link} from "react-router-dom";
+import './Header.scss';
+import logo from '../../../images/logo1.png';
+
 const Header = () => {
  
   return (
-    <div>
-      <h1>Tech On Knowledge</h1>
-      <div>
-        My Page
+    <header>
+      <div id="myPage">
+        <Link to="/mypage"><span id="icon_mypage"></span></Link>
       </div>
-    </div>
+      <Link to="/"><img id="logo" src={logo} alt="Tech On Knowledge" /></Link>
+    </header>
   )
 }
 

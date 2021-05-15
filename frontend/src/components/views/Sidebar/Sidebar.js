@@ -1,10 +1,12 @@
 import React from 'react'
+import './Sidebar.scss'
  
 const Sidebar = () => {
  
   return (
-    <div>
-      <h1>Sidebar</h1>
+    <div id="Sidebar">
+      <div id="tag"><span>category</span></div>
+      
     </div>
   )
 }

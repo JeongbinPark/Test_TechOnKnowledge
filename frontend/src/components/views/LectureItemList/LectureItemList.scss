@@ -1,9 +1,16 @@
+#lists {
+  display: flex;
+  > div {
+    flex: 1;
+  }
+}
+
 .LectureItem {
   display: inline-block;
   width: 200px;
-  height: 300px;
-  image {
-    width: 100px;
-    height: 100px;
+  margin: 20px;
+  img {
+    width: 200px;
+    height: 250px;
   }
 }
