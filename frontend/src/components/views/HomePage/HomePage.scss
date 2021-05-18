@@ -1,24 +1,45 @@
 #HomeSearch {
-  text-align: center;
   padding: 100px 0;
+
+  form {
+    text-align: center;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
   #searchBar {
     display: inline-block;
     border: 2px solid #affda5;
-    width: 70%;
+    width: 100%;
     border-radius: 5px;
     #searchInputBox {
       display: inline-block;
-      width: calc(100% - 62px);
+      width: calc(100% - 92px);
       height: 60px;
       > input {
         margin-left: 5%;
         border-width: 0;
-        display: inline-block;
+        display: block;
+        float: left;
         outline: none;
         font-size: 20px;
         height: 50px;
-        width: 95%;
+        width: 85%;
         height: 100%;
+      }
+    }
+    #detailBox {
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 20px;
+      #icon_detail {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        background-image: url(../../../images/iconDetail.png);
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
       }
     }
     button {
@@ -38,14 +59,12 @@
         background-repeat: no-repeat;
       }
     }
-    #searchDetail {
-      width: 100%;
-      height: 200px;
-      background-color: #affda5;
-    }
+  }
+  #searchDetail {
+    height: 200px;
+    background-color: #dfffdb;
   }
 }
-
 #advertisement {
   background-color: antiquewhite;
   height: 400px;

@@ -6,10 +6,11 @@ const HomeSearch = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    //임시
-    setOpenDetail(true);
   }
 
+  const showDetailSearch = () => {
+    setOpenDetail(!openDetail);
+  }
   const onInputChange = (e) => {
     setInputValue(e.target.value);
   }
@@ -21,12 +22,13 @@ const HomeSearch = () => {
         <div id="searchInputBox">
          <input type="text" onChange={onInputChange} value={inputValue} placeholder="강의 검색" />
         </div>
+        <div id="detailBox" onClick={showDetailSearch}><span id="icon_detail"></span></div>
         <button><span id="icon_search"></span></button>
-        {openDetail &&
+      </div>
+      {openDetail &&
           <div id="searchDetail">
 
           </div>}
-      </div>
       </form>
     </div>
   )
