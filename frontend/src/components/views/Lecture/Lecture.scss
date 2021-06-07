@@ -1,0 +1,47 @@
+#LectureInfoBox {
+  > div {
+    height: 50px;
+  }
+}
+
+#buttonBox {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  .lectureButton {
+    display: inline-block;
+    width: 150px;
+    background-color: rgba(125, 250, 181, 0.808);
+    font-size: 25px;
+    text-align: center;
+    margin: 5% 10%;
+    border-radius: 50px;
+    :first-child {
+      padding: 10px;
+    }
+    :last-child {
+      height: 100px;
+      background-color: rgb(209, 250, 236);
+      padding: 15px;
+    }
+  }
+}
+
+#replyBox {
+  #replyTitle {
+    display: flex;
+    > div {
+      width: 180px;
+      height: 60px;
+      border: 1px solid gray;
+    }
+  }
+  #replyContentBox {
+    height: 500px;
+    border: 1px solid gray;
+    .replyInputBox > label {
+      display: block;
+    }
+  }
+}
