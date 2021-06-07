@@ -7,20 +7,24 @@ import Footer from './components/views/Footer/Footer';
 import HomePage from './components/views/HomePage/HomePage';
 import MyPage from './components/views/MyPage/MyPage';
 import Lecture from './components/views/Lecture/Lecture';
+import SearchPage from './components/views/SearchPage/SearchPage';
 
 function App() {
   return (
     <div>
       <Router>
         <Header />
-        <Sidebar />
-        <article>
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/mypage" component={MyPage} />
-            <Route path="/lecture/:lectureId" component={Lecture} />
-          </Switch>
-        </article>
+        <div id="articleBox">
+          <Sidebar />
+          <article>
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/mypage" component={MyPage} />
+              <Route path="/lecture/:lectureId" component={Lecture} />
+              <Route path="/search" component={SearchPage} />
+            </Switch>
+          </article>
+        </div>
         <Footer />
       </Router>
     </div>
