@@ -1,47 +1,44 @@
-import React, {Fragment, useState} from 'react';
- 
+import React, { Fragment, useEffect, useState } from 'react';
+
 const ReplyBox = () => {
   const [replyLists, setReplyLists] = useState('');
-  const [isRelativeLecture, setIsRelativeLecture] = useState(true);
-  const [isReview, setIsReview] = useState(false);
-  const [isQuestion, setIsQuestion] = useState(false);
+  const [clickedItem, setClickedItem] = useState('relativeLecture');
+
+  useEffect(() => {
+
+  })
 
   const onTitleClick = (e) => {
-    setIsRelativeLecture(false);
-    setIsReview(false);
-    setIsQuestion(false);
-    if (e.target.id === "relativeLecture") setIsRelativeLecture(true);
-    else if (e.target.id === "review") setIsReview(true);
-    else setIsQuestion(true);
+    setClickedItem(e.target.id);
   }
-  
+
 
   return (
     <Fragment>
       <div id="replyBox">
         <div id="replyTitle">
-          <div id="relativeLecture" onClick={onTitleClick}>관련강의</div>
-          <div id="review" onClick={onTitleClick}>후 기</div>
-          <div id="question" onClick={onTitleClick}>질 문</div>
+          <div id="relativeLecture" className={clickedItem === "relativeLecture" ? "clicked" : "unclicked"} onClick={onTitleClick}>관련강의</div>
+          <div id="review" className={clickedItem === "review" ? "clicked" : "unclicked"} onClick={onTitleClick}>후 기</div>
+          <div id="question" className={clickedItem === "question" ? "clicked" : "unclicked"} onClick={onTitleClick}>질 문</div>
         </div>
         <div id="replyContentBox">
-          {isRelativeLecture
-          && <div className="replyInputBox" >
+          {clickedItem === "relativeLecture"
+            && <div className="replyInputBox" >
               <label>제목<input /></label>
               <label>관련강의<input /></label>
               <label>내용<input /></label>
               <button>작성</button>
             </div>
           }
-          {isReview
-          &&  <div className="replyInputBox">
+          {clickedItem === "review"
+            && <div className="replyInputBox">
               <label>제목<input /></label>
               <label>내용<input /></label>
               <button>작성</button>
             </div>
           }
-          {isQuestion
-          &&  <div className="replyInputBox">
+          {clickedItem === "question"
+            && <div className="replyInputBox">
               <label>제목<input /></label>
               <label>내용<input /></label>
               <button>작성</button>

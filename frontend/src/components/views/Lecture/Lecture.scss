@@ -1,13 +1,79 @@
+#LectureBox{
+ #LectureBox_top{
+   &:after{
+     content: "";
+     clear:both;
+     display:block;
+   }
+   >div{
+     display: inline-block;
+     height: 50px;
+   }
+   >:first-child{
+     float: left;
+     background-color: green;
+     color:white; 
+     width: 200px;
+     padding : 10px;
+   }
+   >:last-child{
+     float: right;
+     >button{
+       padding : 10px;
+       border: none;
+       border-radius: 10px;
+       width: 130px;
+       height: 40px;
+       margin-right:10px;
+     }
+     #addToCurriculumButton{
+       background-color: lightgreen;
+     }
+     #registerButton{
+       background-color: green;
+     }
+   }
+ }
+}
+
 #LectureInfoBox {
-  > div {
-    height: 50px;
+  border: 1px solid lightgreen;
+  ul{
+    padding: 20px 70px;
+    li {
+      border-bottom : 1px dotted gray;
+      &:first-child{
+        border-bottom : none;
+      }
+      div{
+        display: inline-block;
+        height: 70px;
+        line-height: 4;
+      }
+      #LectureInfoBox_image{
+        text-align: center;
+        display: block;
+        height: 400px;
+        img {
+          width: 600px;
+          height: 400px;
+        }
+      }
+      .LectureInfoList_title{
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+      }
+      .LectureInfoList_content{
+        padding-left:20px;
+      }
+    }
   }
 }
 
 #buttonBox {
   width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  margin : 100px auto;
   text-align: center;
   .lectureButton {
     display: inline-block;
@@ -31,15 +97,25 @@
 #replyBox {
   #replyTitle {
     display: flex;
+    text-align: center;
+    line-height: 2;
+    font-size: 30px;
     > div {
       width: 180px;
       height: 60px;
-      border: 1px solid gray;
+      background-color: lightgray;
+    }
+    .clicked {
+      background-color: lightgreen;
+    }
+    .unclicked {
+      background-color: lightgray;
     }
   }
   #replyContentBox {
+    background-color: lightgreen;
     height: 500px;
-    border: 1px solid gray;
+    padding : 30px;
     .replyInputBox > label {
       display: block;
     }

@@ -1,43 +1,60 @@
-import React, {Fragment, useState} from 'react';
+import React, { Fragment, useState } from 'react';
 import './Lecture.scss';
 import ReplyBox from './ReplyBox';
- 
+
 const Lecture = () => {
- 
+  /*
+   const [lectureData, setLectureData] = useState({
+     category: '',
+     level: '',
+     title: '',
+     link: '',
+     teacher: '',
+     fee: 0,
+     term: 0,
+     explain : '',
+     hash_tag : '',
+     recommendation: 0,
+     epilogue: '',
+     recommend: 0,
+     interest: 0
+   });
+   */
   const [lectureData, setLectureData] = useState({
-    category: '',
-    level: '',
-    title: '',
-    link: '',
-    teacher: '',
+    category: 'Programming',
+    level: '초급',
+    title: '알고리즘 강의',
+    link: 'http://www.inflearn.com/course/알고리즘-강좌#curriculum',
+    teacher: '권오흠',
     fee: 0,
     term: 0,
-    explain : '',
-    hash_tag : '',
+    explain: 'C언어와 자료구조를 익히신 분에게 추천합니다. ',
+    hash_tag: '#알고리즘 #검색트리 #동적계획법',
     recommendation: 0,
     epilogue: '',
-    recommend: 0,
-    interest: 0
+    recommend: 10,
+    interest: 35,
+    imageSrc: "https://cdn.inflearn.com/wp-content/uploads/algorith.png"
   });
   const [clickedRecommend, setClickedRecommend] = useState(false);
   const [clickedInterest, setClickedInterest] = useState(false);
 
-  const { category, level, title, link, teacher, free, term, explain, hash_tag, recommendation, epilogue, recommend, interest } = lectureData; 
-  
+  const { category, level, title, link, teacher, fee, term, explain, hash_tag, recommendation, epilogue, recommend, interest, imageSrc } = lectureData;
 
-  const buttonClick = (e, title) =>{
+
+  const buttonClick = (e, title) => {
     console.log(e, title);
-    if(title === "recommend"){
+    if (title === "recommend") {
       setLectureData({
         ...lectureData,
-        recommend : (clickedRecommend ? recommend - 1 : recommend + 1),
+        recommend: (clickedRecommend ? recommend - 1 : recommend + 1),
       });
       setClickedRecommend(!clickedRecommend);
     }
     else {
       setLectureData({
         ...lectureData,
-        interest : (clickedInterest ? interest - 1 : interest + 1),
+        interest: (clickedInterest ? interest - 1 : interest + 1),
       });
       setClickedInterest(!clickedInterest);
     }
@@ -45,32 +62,63 @@ const Lecture = () => {
 
   return (
     <Fragment>
-      Lecture
       <div id="LectureBox">
-        <div>{category}</div>
-        <button>커리큘럼 추가</button>
-        <button>수강</button>
+        <div id="LectureBox_top">
+          <div>{category}</div>
+          <div>
+            <button id="addToCurriculumButton">커리큘럼 추가</button>
+            <button id="registerButton">수강</button>
+          </div>
+        </div>
         <div id="LectureInfoBox">
           <ul>
-            <li>강좌이름 {title}</li>
-            <li>강사이름 {teacher}</li>
-            <li>이미지</li>
-            <li>난이도 {level}</li>
-            <li>링크 {link}</li>
-            <li>강의료 {free}</li>
-            <li>강의기간 {term}</li>
-            <li>추가설명 {explain}</li>
-            <li>태그 {hash_tag}</li>
+            <li>
+              <div id="LectureInfoBox_image">
+                <img src={imageSrc} alt={title} />
+              </div>
+            </li>
+            <li>
+              <div className="LectureInfoList_title">강좌이름</div>
+              <div className="LectureInfoList_content">{title}</div>
+            </li>
+            <li>
+              <div className="LectureInfoList_title">강사이름</div>
+              <div className="LectureInfoList_content">{teacher}</div>
+            </li>
+            <li>
+              <div className="LectureInfoList_title">난이도</div>
+              <div className="LectureInfoList_content">{level}</div>
+            </li>
+            <li>
+              <div className="LectureInfoList_title">링크</div>
+              <div className="LectureInfoList_content"><a href={link} target="_blank">강의 바로가기</a></div>
+            </li>
+            <li>
+              <div className="LectureInfoList_title">강의료</div>
+              <div className="LectureInfoList_content">{fee}</div>
+            </li>
+            <li>
+              <div className="LectureInfoList_title">강의기간</div>
+              <div className="LectureInfoList_content">{term}</div>
+            </li>
+            <li>
+              <div className="LectureInfoList_title">추가설명</div>
+              <div className="LectureInfoList_content">{explain}</div>
+            </li>
+            <li>
+              <div className="LectureInfoList_title">태그</div>
+              <div className="LectureInfoList_content">{hash_tag}</div>
+            </li>
           </ul>
         </div>
 
         <div id="buttonBox">
-          <div className="lectureButton" onClick={(e)=>buttonClick(e,"recommend")}><div id="lectureButton_title">추천</div><div>{recommend}</div></div>
-          <div className="lectureButton" onClick={(e)=>buttonClick(e,"interest")}><div id="lectureButton_title">관심</div><div>{interest}</div></div>
+          <div className="lectureButton" onClick={(e) => buttonClick(e, "recommend")}><div id="lectureButton_title">추천</div><div>{recommend}</div></div>
+          <div className="lectureButton" onClick={(e) => buttonClick(e, "interest")}><div id="lectureButton_title">관심</div><div>{interest}</div></div>
         </div>
-        
+
         <ReplyBox />
-      </div>  
+      </div>
     </Fragment>
   )
 }
