@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
+import ScrollToTop from "./components/utils/ScrollToTop";
 import Header from './components/views/Header/Header';
 import Sidebar from './components/views/Sidebar/Sidebar';
 import Footer from './components/views/Footer/Footer';
@@ -13,6 +14,7 @@ function App() {
   return (
     <div>
       <Router>
+        <ScrollToTop />
         <Header />
         <div id="articleBox">
           <Sidebar />
