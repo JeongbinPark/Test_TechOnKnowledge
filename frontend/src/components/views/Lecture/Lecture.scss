@@ -55,8 +55,8 @@
         display: block;
         height: 400px;
         img {
-          width: 600px;
-          height: 400px;
+          width: 80%;
+          height: 80%
         }
       }
       .LectureInfoList_title{
@@ -114,10 +114,44 @@
   }
   #replyContentBox {
     background-color: lightgreen;
-    height: 500px;
     padding : 30px;
-    .replyInputBox > label {
-      display: block;
+    .replyInputBox {
+      >div{
+        width:80%;
+        display: inline-block;
+        input {
+          width:100%;
+        }
+        :last-child input{
+          height:100px;
+        }
+      }
+      button{
+        vertical-align: top;
+        width: 15%;
+        height: 50px;
+        margin: 5px;
+      }
+    }
+  }
+}
+
+
+.replyItem {
+  background-color: aquamarine;
+  margin:15px 0;
+  #replyItem_info{
+    display: inline-block;
+    width: 80%;
+  }
+  #replyItem_recommendation{
+    display: inline-block;
+    >div{
+      display: inline-block;
+      width:40px;
+      height:40px;
+      border-radius: 20px;
+      background-color: green;
     }
   }
 }
