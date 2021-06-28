@@ -1,31 +1,32 @@
-import React, {Fragment, useState} from 'react'
- 
+import React, { Fragment, useState } from 'react';
+import useForm from '../../utils/useForm';
+
 const HomeSearch = () => {
   const [openDetail, setOpenDetail] = useState(false);
   const [inputValue, setInputValue] = useState('');
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-  }
+  const { values, errors, submitting, handleChange, handleSubmit } = useForm({
+    initialValues: { search: "" },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+    validate: {}
+  });
 
   const showDetailSearch = () => {
     setOpenDetail(!openDetail);
   }
-  const onInputChange = (e) => {
-    setInputValue(e.target.value);
-  }
 
   return (
     <div id="HomeSearch">
-      <form onSubmit={onSubmit}>
-      <div id="searchBar">
-        <div id="searchInputBox">
-         <input type="text" onChange={onInputChange} value={inputValue} placeholder="강의 검색" />
+      <form onSubmit={handleSubmit}>
+        <div id="searchBar">
+          <div id="searchInputBox">
+            <input type="text" onChange={handleChange} value={inputValue} placeholder="강의 검색" />
+          </div>
+          <div id="detailBox" onClick={showDetailSearch}><span id="icon_detail"></span></div>
+          <button><span id="icon_search"></span></button>
         </div>
-        <div id="detailBox" onClick={showDetailSearch}><span id="icon_detail"></span></div>
-        <button><span id="icon_search"></span></button>
-      </div>
-      {openDetail &&
+        {openDetail &&
           <div id="searchDetail">
 
           </div>}
