@@ -1,40 +1,49 @@
 #LectureBox{
- #LectureBox_top{
-   &:after{
-     content: "";
-     clear:both;
-     display:block;
-   }
-   >div{
-     display: inline-block;
-     height: 50px;
-   }
-   >:first-child{
-     float: left;
-     background-color: green;
-     color:white; 
-     width: 200px;
-     padding : 10px;
-   }
-   >:last-child{
-     float: right;
-     >button{
-       padding : 10px;
-       border: none;
-       border-radius: 10px;
-       width: 130px;
-       height: 40px;
-       margin-right:10px;
-     }
-     #addToCurriculumButton{
-       background-color: lightgreen;
-     }
-     #registerButton{
-       background-color: green;
-     }
-   }
- }
+  >div{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
+
+#LectureBox_top{
+  font-weight: bold;
+  &:after{
+    content: "";
+    clear:both;
+    display:block;
+  }
+  >div{
+    display: inline-block;
+    height: 50px;
+  }
+  >:first-child{
+    float: left;
+    background-color: #50b848;
+    text-align: center;
+    color:white; 
+    width: 200px;
+    padding : 10px;
+  }
+  >:last-child{
+    float: right;
+    >button{
+      padding : 10px;
+      border: none;
+      border-radius: 10px;
+      width: 130px;
+      height: 40px;
+      margin-right:10px;
+    }
+    #addToCurriculumButton{
+      background-color: rgba(233, 231, 231, 0.911);
+    }
+    #registerButton{
+      background-color: rgba(233, 231, 231, 0.911);
+    }
+  }
+}
+
 
 #LectureInfoBox {
   border: 1px solid lightgreen;
@@ -72,8 +81,8 @@
 }
 
 #buttonBox {
-  width: 80%;
-  margin : 100px auto;
+  margin-top : 100px;
+  margin-bottom : 100px;
   text-align: center;
   .lectureButton {
     display: inline-block;
@@ -99,21 +108,21 @@
     display: flex;
     text-align: center;
     line-height: 2;
-    font-size: 30px;
+    font-size: 20px;
     > div {
-      width: 180px;
-      height: 60px;
+      width: 100px;
+      height: 50px;
       background-color: lightgray;
     }
     .clicked {
-      background-color: lightgreen;
+      background-color: rgb(225, 252, 223);
     }
     .unclicked {
       background-color: lightgray;
     }
   }
   #replyContentBox {
-    background-color: lightgreen;
+    background-color: rgb(225, 252, 223);
     padding : 30px;
     .replyInputBox {
       >div{
@@ -138,20 +147,38 @@
 
 
 .replyItem {
-  background-color: aquamarine;
+  background-color: rgba(167, 255, 158, 0.979);
   margin:15px 0;
+  padding: 30px;
   #replyItem_info{
     display: inline-block;
     width: 80%;
+    #replyItem_info_explain{
+      margin-top: 20px;
+    }
   }
   #replyItem_recommendation{
     display: inline-block;
+    vertical-align: top;
+    float:right;
     >div{
       display: inline-block;
-      width:40px;
-      height:40px;
-      border-radius: 20px;
-      background-color: green;
+    }
+    .replyItem_recommendation_button{
+      display: inline-block;
+      width:50px;
+      height:50px;
+      margin-right: 5px;
+      border-radius: 25px;
+      background-color: green;    
+      text-align: center;
+      line-height: 3;
+      color: white;
+    }
+    .replyItem_recommendation_value{
+      margin:0;
+      padding:0;
+      text-align: center;
     }
   }
 }

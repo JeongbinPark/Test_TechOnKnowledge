@@ -138,16 +138,25 @@ const ReplyItem = (props) => {
             }
           </div>
           <div>{props.date}</div>
-          <div>{props.explain}</div>
+          <div id="replyItem_info_explain">{props.explain}</div>
         </div>
         {props.type === "relativeLecture" ?
           <div id="replyItem_recommendation">
-            <div>{props.recommendationBefore}</div>
-            <div>{props.recommendationAfter}</div>
+            <div>
+              <div className="replyItem_recommendation_button"> 👈 </div>
+              <div className="replyItem_recommendation_value">{props.recommendationBefore}</div>
+            </div>
+            <div>
+              <div className="replyItem_recommendation_button"> 👉 </div>
+              <div className="replyItem_recommendation_value">{props.recommendationAfter}</div>
+            </div>
           </div>
           :
           <div id="replyItem_recommendation">
-            <div>{props.recommendation}</div>
+            <div>
+              <div className="replyItem_recommendation_button">👍</div>
+              <div className="replyItem_recommendation_value">{props.recommendation}</div>
+            </div>
           </div>
         }
       </div>
