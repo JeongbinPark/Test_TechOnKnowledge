@@ -17,8 +17,12 @@ const Lecture = () => {
      recommendation: 0,
      epilogue: '',
      recommend: 0,
-     interest: 0
+     author: '',
    });
+  const [userLectureData, setUserLectureData] = useState({
+    clickedRecommend : false,
+    clickedRegister : false,
+  });
    */
   const [lectureData, setLectureData] = useState({
     category: 'Programming',
@@ -33,49 +37,90 @@ const Lecture = () => {
     recommendation: 0,
     epilogue: '',
     recommend: 10,
-    interest: 35,
-    imageSrc: "https://cdn.inflearn.com/wp-content/uploads/algorith.png"
+    imageSrc: "https://cdn.inflearn.com/wp-content/uploads/algorith.png",
+    author: 'abcd'
   });
-  const [clickedRecommend, setClickedRecommend] = useState(false);
-  const [clickedInterest, setClickedInterest] = useState(false);
 
-  const { category, level, title, link, teacher, fee, term, explain, hash_tag, recommendation, epilogue, recommend, interest, imageSrc } = lectureData;
+  const [userLectureData, setUserLectureData] = useState({
+    clickedRecommend : false,
+    clickedRegister : false,
+  });
 
+  const [isMouseOver, setIsMouseOver] = useState(false);
 
-  const buttonClick = (e, title) => {
-    console.log(e, title);
-    if (title === "recommend") {
+  const { category, level, title, link, teacher, fee, term, explain, hash_tag, recommendation, epilogue, recommend, imageSrc,author } = lectureData;
+  const { clickedRecommend, clickedRegister} = userLectureData;
+
+  const onRecommendClick = (e) => {
+    //추천 취소
+    if(clickedRecommend){
       setLectureData({
         ...lectureData,
-        recommend: (clickedRecommend ? recommend - 1 : recommend + 1),
+        recommend: recommend - 1,
       });
-      setClickedRecommend(!clickedRecommend);
+      e.target.setAttribute('style','background-color:rgba(233, 231, 231, 0.911)');
     }
+    //추천
     else {
       setLectureData({
         ...lectureData,
-        interest: (clickedInterest ? interest - 1 : interest + 1),
+        recommend: recommend + 1,
       });
-      setClickedInterest(!clickedInterest);
+      e.target.setAttribute('style','background-color:lightgreen');
     }
+    setUserLectureData({
+      ...userLectureData,
+      clickedRecommend: !clickedRecommend
+    });
+  }
+  
+  const onRegisterClick = (e) => {
+    //수강 취소
+    if(clickedRegister){
+      e.target.setAttribute('style','background-color:rgba(233, 231, 231, 0.911)');
+      e.target.innerHTML = '수강';
+    }
+    //수강
+    else {
+     //e.target.setAttribute('style','background-color:lightgreen');
+      e.target.innerHTML = '수강 취소';
+    }
+    setUserLectureData({
+      ...userLectureData,
+      clickedRegister: !clickedRegister
+    });
   }
 
+  const onMouseOverHandler = () => {
+    setIsMouseOver(true);
+  }
+  const onMouseLeaveHandler = () => {
+    setIsMouseOver(false);
+  }
   return (
     <Fragment>
       <div id="LectureBox">
         <div id="LectureBox_top">
           <div>{category}</div>
           <div>
-            <button id="addToCurriculumButton">커리큘럼 추가</button>
-            <button id="registerButton">수강</button>
+            <button id="recommendButton" onClick={onRecommendClick}>👍 {recommend}</button>
           </div>
         </div>
         <div id="LectureInfoBox">
           <ul>
-            <li>
-              <div id="LectureInfoBox_image">
+            <li id="LectureInfoBox_image">
+              <div id="LectureInfoBox_image_front" onMouseEnter={onMouseOverHandler}>
                 <img src={imageSrc} alt={title} />
               </div>
+              {isMouseOver && 
+              <div id="LectureInfoBox_image_back"  onMouseLeave={onMouseLeaveHandler}>
+                <a href={link} target="_blank" rel="noreferrer">
+                  <div id="LectureInfoBox_image_back_blank">
+                    <div>강의 바로가기</div>
+                  </div>
+                </a>
+              </div>
+              }
             </li>
             <li>
               <div className="LectureInfoList_title">강좌이름</div>
@@ -88,10 +133,6 @@ const Lecture = () => {
             <li>
               <div className="LectureInfoList_title">난이도</div>
               <div className="LectureInfoList_content">{level}</div>
-            </li>
-            <li>
-              <div className="LectureInfoList_title">링크</div>
-              <div className="LectureInfoList_content"><a href={link} target="_blank">강의 바로가기</a></div>
             </li>
             <li>
               <div className="LectureInfoList_title">강의료</div>
@@ -109,12 +150,17 @@ const Lecture = () => {
               <div className="LectureInfoList_title">태그</div>
               <div className="LectureInfoList_content">{hash_tag}</div>
             </li>
+            <li>
+              <div className="LectureInfoList_title">작성자</div>
+              <div className="LectureInfoList_content">{author}</div>
+            </li>
           </ul>
         </div>
-
-        <div id="buttonBox">
-          <div className="lectureButton" onClick={(e) => buttonClick(e, "recommend")}><div id="lectureButton_title">추천</div><div>{recommend}</div></div>
-          <div className="lectureButton" onClick={(e) => buttonClick(e, "interest")}><div id="lectureButton_title">관심</div><div>{interest}</div></div>
+        <div id="registerButtonBox">
+          <button id="registerButton" onClick={onRegisterClick}>수강</button>
+          {clickedRegister &&
+            <button>수강 완료</button>
+          }
         </div>
 
         <ReplyBox />

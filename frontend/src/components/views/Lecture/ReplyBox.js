@@ -23,14 +23,12 @@ const tempData0 = [
 const tempData1 = [
   {
     id: 1,
-    title: "아주 좋았어요",
     date: "2021.06.13",
     explain: "설명을 친절하게 해주셔요",
     recommendation: 2
   },
   {
     id: 2,
-    title: "초보에게 듣기 좋아요",
     date: "2021.07.28",
     explain: "꼭 들어보세요",
     recommendation: 1
@@ -40,7 +38,6 @@ const tempData1 = [
 const tempData2 = [
   {
     id: 1,
-    title: "3번째 강의 실습에 에러가 나요ㅠㅠ",
     date: "2021.06.01",
     explain: "설명해주신 ~~에 ~~ 에러가 나네요ㅠㅠ",
     recommendation: 2
@@ -99,7 +96,6 @@ const ReplyBox = () => {
           {clickedItem === "review"
             && <div className="replyInputBox">
               <div>
-                <label><input placeholder="제목을 입력해주세요" /></label>
                 <label><input placeholder="내용을 입력해주세요" /></label>
               </div>
               <button>작성</button>
@@ -108,7 +104,6 @@ const ReplyBox = () => {
           {clickedItem === "question"
             && <div className="replyInputBox">
               <div>
-                <label><input placeholder="제목을 입력해주세요" /></label>
                 <label><input placeholder="내용을 입력해주세요" /></label>
               </div>
               <button>작성</button>
@@ -127,39 +122,52 @@ export default ReplyBox;
 
 
 const ReplyItem = (props) => {
+  const onReplyClick = () => {
+    
+  }
+
   return (
-    <Fragment>
-      <div className="replyItem">
-        <div id="replyItem_info">
-          <div>
-            {props.type === "relativeLecture"
-              ? <Link to={`/lecture/:${props.id}`}>{props.title}</Link>
-              : <div>{props.title}</div>
-            }
-          </div>
+    <div className="replyItem">
+      <div id="replyItem_info">
+        <div id="replyItem_info_title">
+          {props.type === "relativeLecture"
+            ? <Link to={`/lecture/:${props.id}`}>{props.title}</Link>
+            : <div>{props.title}</div>
+          }
           <div>{props.date}</div>
-          <div id="replyItem_info_explain">{props.explain}</div>
         </div>
-        {props.type === "relativeLecture" ?
-          <div id="replyItem_recommendation">
+        <div id="replyItem_buttonbox">
+          {props.type === "relativeLecture" &&
+          <Fragment>
             <div>
-              <div className="replyItem_recommendation_button"> 👈 </div>
+              <div className="replyItem_buttonbox_button"> 👈 </div>
               <div className="replyItem_recommendation_value">{props.recommendationBefore}</div>
             </div>
             <div>
-              <div className="replyItem_recommendation_button"> 👉 </div>
+              <div className="replyItem_buttonbox_button"> 👉 </div>
               <div className="replyItem_recommendation_value">{props.recommendationAfter}</div>
             </div>
-          </div>
-          :
-          <div id="replyItem_recommendation">
+          </Fragment>
+          }
+          {props.type === "review" &&
+          <Fragment>
             <div>
-              <div className="replyItem_recommendation_button">👍</div>
+              <div className="replyItem_buttonbox_button">👍</div>
               <div className="replyItem_recommendation_value">{props.recommendation}</div>
             </div>
-          </div>
-        }
+          </Fragment>
+          }
+          {props.type === "question" &&
+          <Fragment>
+            <div>
+              <div className="replyItem_buttonbox_button" onClick={onReplyClick}>↪</div>
+              <div></div>
+            </div>
+          </Fragment>
+          }
+        </div>
       </div>
-    </Fragment>
+      <div id="replyItem_info_explain">{props.explain}</div>
+    </div>
   )
 }
