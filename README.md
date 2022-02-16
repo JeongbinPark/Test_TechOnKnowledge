@@ -7,6 +7,11 @@ Tech On Knowledge란, “지식에 테크를 탄다”라는 의미로 여러 �
 - 흩어진 온라인 강좌 모음 및 추천
 - 나만의 강좌 커리큘럼 생성
 
-### Front
+### FrontEnd
 	- React.js
 	- Sass 
+
+### BackEnd
+https://github.com/pknu-wap/TechOnKnowledge
+
+API 설계 : https://mma7710.gitbook.io/api-document/
